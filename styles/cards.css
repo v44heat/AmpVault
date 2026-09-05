@@ -1,0 +1,253 @@
+/* =============================================
+   AmpVault — Amp Card Styles
+   ============================================= */
+
+/* --- Amp Grid --- */
+.amp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* --- Amp Card --- */
+.amp-card {
+  background: var(--surface);
+  border: 1px solid var(--surface-alt);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition-med);
+  position: relative;
+  animation: cardEnter 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.amp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-light);
+}
+
+.amp-card:hover .amp-card__visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.15) 100%);
+  pointer-events: none;
+}
+
+.amp-card:active {
+  transform: translateY(-1px);
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.amp-card__visual {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Different bg colors per type */
+.amp-card[data-type="tube"] .amp-card__visual {
+  background: linear-gradient(135deg, #3a2010 0%, #5c3520 50%, #2a1508 100%);
+}
+.amp-card[data-type="solid-state"] .amp-card__visual {
+  background: linear-gradient(135deg, #1a2030 0%, #2a3545 50%, #151c28 100%);
+}
+.amp-card[data-type="modeling"] .amp-card__visual {
+  background: linear-gradient(135deg, #1a2820 0%, #253830 50%, #121e18 100%);
+}
+.amp-card[data-type="hybrid"] .amp-card__visual {
+  background: linear-gradient(135deg, #2a1828 0%, #3a2535 50%, #20121e 100%);
+}
+
+.amp-card__amp-icon {
+  position: relative;
+  z-index: 1;
+}
+
+.amp-card__glow {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 40px;
+  border-radius: 50%;
+  filter: blur(20px);
+  opacity: 0.6;
+}
+
+.amp-card[data-type="tube"] .amp-card__glow { background: #ff8844; }
+.amp-card[data-type="solid-state"] .amp-card__glow { background: #4488cc; }
+.amp-card[data-type="modeling"] .amp-card__glow { background: #44cc88; }
+.amp-card[data-type="hybrid"] .amp-card__glow { background: #cc44aa; }
+
+.amp-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  color: #fff;
+}
+
+.amp-card[data-type="tube"] .amp-card__badge { background: rgba(196,80,26,0.85); }
+.amp-card[data-type="solid-state"] .amp-card__badge { background: rgba(60,100,140,0.85); }
+.amp-card[data-type="modeling"] .amp-card__badge { background: rgba(60,140,80,0.85); }
+.amp-card[data-type="hybrid"] .amp-card__badge { background: rgba(140,60,120,0.85); }
+
+.amp-card__actions {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: all var(--transition-fast);
+}
+
+.amp-card:hover .amp-card__actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Always show favorited heart */
+.amp-card__actions .amp-card__action-btn.favorited {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Keep actions visible if any child is favorited */
+.amp-card__actions:has(.favorited) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.amp-card__action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.amp-card__action-btn:hover {
+  background: rgba(0,0,0,0.7);
+  transform: scale(1.1);
+}
+
+.amp-card__action-btn.favorited {
+  background: var(--danger);
+}
+
+.amp-card__action-btn.compared {
+  background: var(--secondary);
+}
+
+.amp-card__body {
+  padding: 16px;
+}
+
+.amp-card__brand {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  margin-bottom: 4px;
+}
+
+.amp-card__name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.amp-card__specs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.amp-card__spec {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.amp-card__spec-label {
+  color: var(--ink-muted);
+}
+
+.amp-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.amp-card__tag {
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--ink-muted);
+  border: 1px solid var(--surface-alt);
+}
+
+.amp-card__footer {
+  padding: 0 16px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.amp-card__price {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.amp-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--secondary);
+}

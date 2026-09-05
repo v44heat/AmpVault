@@ -1,0 +1,52 @@
+/* =============================================
+   AmpVault — Theme Tokens
+   1. Background:  #f5efe6 (warm cream/parchment)
+   2. Surface:     #ede4d4 (warm beige)
+   3. Ink:         #2c1810 (espresso brown)
+   4. Primary:     #c4501a (burnt orange / tolex)
+   5. Secondary:   #8b6914 (aged gold / knob)
+   6. Success:     #3d7a4a (amp green LED)
+   7. Danger:      #b33030 (clip red)
+   8. Restraint:   #a89882 (warm gray)
+   ============================================= */
+
+:root {
+  --bg: #f5efe6;
+  --bg-warm: #f0e8da;
+  --surface: #ede4d4;
+  --surface-alt: #e6dac8;
+  --surface-hover: #ddd0be;
+  --ink: #2c1810;
+  --ink-soft: #5a4636;
+  --ink-muted: #8a7a6a;
+  --primary: #c4501a;
+  --primary-hover: #a8430f;
+  --primary-light: #e8c4aa;
+  --secondary: #8b6914;
+  --secondary-light: #d4b860;
+  --success: #3d7a4a;
+  --danger: #b33030;
+  --restraint: #a89882;
+  --restraint-light: #c4b8a6;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --shadow-sm: 0 1px 3px rgba(44,24,16,0.08);
+  --shadow-md: 0 4px 12px rgba(44,24,16,0.1);
+  --shadow-lg: 0 8px 32px rgba(44,24,16,0.12);
+  --shadow-xl: 0 16px 48px rgba(44,24,16,0.16);
+
+  --transition-fast: 150ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-med: 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-slow: 420ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  --topbar-h: 64px;
+  --sidebar-w: 260px;
+}

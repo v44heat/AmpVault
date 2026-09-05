@@ -1,0 +1,256 @@
+// AmpVault — Amplifier Data Catalog
+export const AMPS = [
+  {
+    id: 'fender-57-custom', brand: 'Fender', name: "'57 Custom Deluxe",
+    type: 'tube', form: 'combo', wattage: 12, price: 1699, rating: 4.8,
+    impedance: '8Ω', speaker: '1×12" Jensen P-12R', channels: 2, weight: '34 lbs',
+    dimensions: '24" × 16" × 8.5"', year: 2017,
+    tagline: 'The sound that started it all',
+    description: 'The \'57 Custom Deluxe reissue captures the magic of the original tweed-era amplifier that defined early rock and roll, country, and blues. With its all-tube signal path, 5E3-inspired circuit, and Jensen P-12R speaker, it delivers the warm, harmonically rich breakup that guitarists have chased for decades.',
+    genres: ['blues', 'rock', 'country'],
+    tones: { warm: 9, bright: 5, crunch: 7, gain: 5, clean: 6 },
+    features: ['All-tube circuit', 'Tweed covering', '5E3 circuit reissue', 'Birch-ply cabinet']
+  },
+  {
+    id: 'fender-twin-reverb', brand: 'Fender', name: 'Twin Reverb',
+    type: 'tube', form: 'combo', wattage: 85, price: 2199, rating: 4.9,
+    impedance: '4Ω', speaker: '2×12" Jensen C-12K', channels: 2, weight: '64 lbs',
+    dimensions: '26" × 20" × 10"', year: 1963,
+    tagline: 'Clean tone royalty',
+    description: 'The Twin Reverb is perhaps the most recorded amplifier in history. Known for its massive clean headroom and shimmering spring reverb/vibrato, it has been the backbone of everything from country to psychedelic rock.',
+    genres: ['blues', 'rock', 'country', 'jazz'],
+    tones: { warm: 6, bright: 8, crunch: 4, gain: 3, clean: 10 },
+    features: ['Spring reverb', 'Vibrato circuit', 'Dual 12" speakers', 'All-tube signal path']
+  },
+  {
+    id: 'marshall-jcm800', brand: 'Marshall', name: 'JCM 800 2203',
+    type: 'tube', form: 'head', wattage: 100, price: 2499, rating: 4.7,
+    impedance: '4/8/16Ω', speaker: 'Head only (pairs with 4×12" cab)', channels: 1, weight: '52 lbs',
+    dimensions: '29" × 11" × 8"', year: 1981,
+    tagline: 'The sound of hard rock',
+    description: 'The JCM 800 defined the sound of 1980s hard rock and heavy metal. Its aggressive midrange, tight low end, and searing high-gain tones made it the weapon of choice for everyone from Randy Rhoads to Slash.',
+    genres: ['rock', 'metal'],
+    tones: { warm: 4, bright: 7, crunch: 9, gain: 8, clean: 3 },
+    features: ['Master volume', 'Presence control', 'High-gain preamp', 'Plexi-style faceplate']
+  },
+  {
+    id: 'mesa-boogie-mark-five', brand: 'Mesa/Boogie', name: 'Mark Five',
+    type: 'tube', form: 'combo', wattage: 90, price: 3299, rating: 4.8,
+    impedance: '8Ω', speaker: '1×12" Celestion C90', channels: 2, weight: '61 lbs',
+    dimensions: '22" × 19" × 10"', year: 2009,
+    tagline: 'From jazz to metal in one amp',
+    description: 'The Mark Five represents the pinnacle of Mesa/Boogie\'s legendary Mark series. With two fully independent channels, each with multiple modes, it covers everything from sparkling cleans to tight, focused high-gain.',
+    genres: ['rock', 'metal', 'blues', 'jazz'],
+    tones: { warm: 6, bright: 6, crunch: 8, gain: 9, clean: 7 },
+    features: ['5-band graphic EQ', 'Dual channels', 'Multi-mode switching', 'Inner/outer bias trimmers']
+  },
+  {
+    id: 'vox-ac30', brand: 'Vox', name: 'AC30 Top Boost',
+    type: 'tube', form: 'combo', wattage: 30, price: 1899, rating: 4.7,
+    impedance: '8Ω', speaker: '2×12" Vox Blue Alnico', channels: 2, weight: '72 lbs',
+    dimensions: '27" × 21" × 10"', year: 1960,
+    tagline: 'British chime and sparkle',
+    description: 'The AC30 is the sound of the British Invasion. Its Class A, cathode-biased circuit with EL84 output tubes produces a distinctive chime and harmonic complexity that no other amp can quite replicate.',
+    genres: ['rock', 'indie', 'blues'],
+    tones: { warm: 7, bright: 9, crunch: 7, gain: 5, clean: 7 },
+    features: ['Class A operation', 'Alnico Blue speakers', 'Top Boost circuit', 'Tremolo effect']
+  },
+  {
+    id: 'fender-princeton-reverb', brand: 'Fender', name: 'Princeton Reverb',
+    type: 'tube', form: 'combo', wattage: 12, price: 1549, rating: 4.8,
+    impedance: '8Ω', speaker: '1×10" Jensen C-10R', channels: 2, weight: '32 lbs',
+    dimensions: '20" × 16" × 9.5"', year: 1964,
+    tagline: 'Studio secret weapon',
+    description: 'The Princeton Reverb is the studio guitarist\'s secret weapon. Small enough for recording but loud enough for small gigs, it delivers Fender\'s signature clean-to-grit tones with onboard spring reverb and tremolo.',
+    genres: ['blues', 'rock', 'country', 'indie'],
+    tones: { warm: 8, bright: 6, crunch: 6, gain: 4, clean: 8 },
+    features: ['Spring reverb', 'Tremolo', 'Compact size', 'All-tube 6V6 circuit']
+  },
+  {
+    id: 'orange-rockerverb', brand: 'Orange', name: 'Rockerverb 100 MKIII',
+    type: 'tube', form: 'head', wattage: 100, price: 2599, rating: 4.6,
+    impedance: '4/8/16Ω', speaker: 'Head only', channels: 2, weight: '55 lbs',
+    dimensions: '26" × 12" × 10"', year: 2012,
+    tagline: 'Orange crush included',
+    description: 'The Rockerverb combines Orange\'s signature warm, midrange-heavy voicing with modern versatility. Channel 1 delivers crystal cleans through to classic rock crunch, while Channel 2 goes from thick overdrive to modern high-gain.',
+    genres: ['rock', 'metal', 'indie', 'blues'],
+    tones: { warm: 8, bright: 4, crunch: 8, gain: 8, clean: 5 },
+    features: ['Tube-driven reverb', 'Switchable output power', 'Orange styling', 'Dual channels']
+  },
+  {
+    id: 'fender-hot-rod', brand: 'Fender', name: 'Hot Rod Deluxe',
+    type: 'tube', form: 'combo', wattage: 40, price: 899, rating: 4.5,
+    impedance: '8Ω', speaker: '1×12" Celestion G12V-70', channels: 3, weight: '45 lbs',
+    dimensions: '23.5" × 17" × 9.5"', year: 1996,
+    tagline: 'Workhorse with attitude',
+    description: 'The Hot Rod Deluxe took the Blues Deluxe platform and added a third channel with significantly more gain. It\'s become one of the most popular amps for gigging musicians.',
+    genres: ['blues', 'rock', 'country'],
+    tones: { warm: 6, bright: 6, crunch: 7, gain: 6, clean: 7 },
+    features: ['Three channels', 'Footswitch included', 'Spring reverb', 'Boost circuit']
+  },
+  {
+    id: 'roland-jc-40', brand: 'Roland', name: 'Jazz Chorus JC-40',
+    type: 'solid-state', form: 'combo', wattage: 40, price: 999, rating: 4.6,
+    impedance: '8Ω', speaker: '2×10" Roland speakers', channels: 2, weight: '44 lbs',
+    dimensions: '24" × 17" × 10"', year: 2017,
+    tagline: 'The cleanest clean in town',
+    description: 'The Roland Jazz Chorus series has been the gold standard for clean tones since 1975. Its dual-power-amp design creates true stereo chorus effect that no pedal can replicate.',
+    genres: ['jazz', 'indie', 'pop', 'blues'],
+    tones: { warm: 4, bright: 9, crunch: 2, gain: 2, clean: 10 },
+    features: ['Stereo chorus', 'Reverb', 'Dual 10" speakers', 'True stereo design']
+  },
+  {
+    id: 'laney-ironheart', brand: 'Laney', name: 'Ironheart IRT15H',
+    type: 'solid-state', form: 'head', wattage: 15, price: 549, rating: 4.3,
+    impedance: '4/8/16Ω', speaker: 'Head only', channels: 1, weight: '22 lbs',
+    dimensions: '19" × 9" × 8"', year: 2012,
+    tagline: 'Iron-clad metal tones',
+    description: 'Laney\'s Ironheart series brought modern high-gain solid-state design to an affordable price point. The unique Dynamics section acts as both a compressor and noise gate.',
+    genres: ['metal', 'rock'],
+    tones: { warm: 3, bright: 6, crunch: 7, gain: 9, clean: 4 },
+    features: ['Dynamics circuit', 'Resonance control', 'Presence control', 'Effects loop']
+  },
+  {
+    id: 'peavey-bandit', brand: 'Peavey', name: 'Bandit 112',
+    type: 'solid-state', form: 'combo', wattage: 80, price: 449, rating: 4.2,
+    impedance: '8Ω', speaker: '1×12" Scorpion', channels: 2, weight: '38 lbs',
+    dimensions: '22" × 18" × 10"', year: 2005,
+    tagline: 'The unkillable workhorse',
+    description: 'The Peavey Bandit has been the affordable gigging amp for decades. Known for its incredible durability and surprisingly good tones with TransTube technology.',
+    genres: ['rock', 'blues', 'country', 'metal'],
+    tones: { warm: 5, bright: 6, crunch: 7, gain: 6, clean: 6 },
+    features: ['TransTube technology', 'Built-in effects', 'Headphone output', 'Extremely durable']
+  },
+  {
+    id: 'kemper-profiling', brand: 'Kemper', name: 'Profiling Amplifier',
+    type: 'modeling', form: 'head', wattage: 600, price: 2199, rating: 4.9,
+    impedance: '4/8/16Ω', speaker: 'Head only', channels: 'Unlimited profiles', weight: '13 lbs',
+    dimensions: '14" × 12" × 5"', year: 2012,
+    tagline: 'Profile any amp, anywhere',
+    description: 'The Kemper Profiling Amplifier revolutionized the industry by creating digital "profiles" of real amplifiers. It captures the entire signal chain into a single profile.',
+    genres: ['rock', 'metal', 'blues', 'jazz', 'pop', 'country', 'indie'],
+    tones: { warm: 7, bright: 7, crunch: 8, gain: 8, clean: 8 },
+    features: ['Amp profiling', '1000+ built-in tones', 'Effects suite', 'USB audio interface', 'WiFi connectivity']
+  },
+  {
+    id: 'line-6-helix', brand: 'Line 6', name: 'Helix Floor',
+    type: 'modeling', form: 'portable', wattage: 'N/A (Direct)', price: 1499, rating: 4.7,
+    impedance: 'XLR/1/4"', speaker: 'None (direct output)', channels: 'Unlimited presets', weight: '14 lbs',
+    dimensions: '19" × 12" × 4"', year: 2015,
+    tagline: 'Full rig in a pedalboard',
+    description: 'The Helix Floor is a complete guitar rig in a compact format. With HX Modeling, it recreates vintage and modern amps with startling accuracy.',
+    genres: ['rock', 'metal', 'blues', 'jazz', 'pop', 'country', 'indie'],
+    tones: { warm: 7, bright: 7, crunch: 8, gain: 8, clean: 8 },
+    features: ['HX amp modeling', 'Color LCD display', 'Scribble strip labels', 'Expression pedal', 'USB audio interface']
+  },
+  {
+    id: 'boss-katana', brand: 'Boss', name: 'Katana-100 MkII',
+    type: 'modeling', form: 'combo', wattage: 100, price: 449, rating: 4.7,
+    impedance: '8Ω', speaker: '1×12" Custom Boss speaker', channels: '5 amp types', weight: '34 lbs',
+    dimensions: '21" × 17" × 10"', year: 2019,
+    tagline: 'More amp than you deserve at this price',
+    description: 'The Boss Katana series shocked the guitar world by delivering tones that rival amps costing five times more. Five amp types, built-in effects, and a 100-watt power section.',
+    genres: ['rock', 'blues', 'metal', 'country', 'pop', 'indie'],
+    tones: { warm: 6, bright: 6, crunch: 7, gain: 7, clean: 7 },
+    features: ['5 amp types', 'Built-in effects', 'Tone Studio software', 'Power control (0.5/50/100W)', 'USB recording']
+  },
+  {
+    id: 'fractal-axe-fx', brand: 'Fractal Audio', name: 'Axe-Fx III',
+    type: 'modeling', form: 'head', wattage: 'N/A (Direct)', price: 2499, rating: 4.9,
+    impedance: 'XLR/1/4"', speaker: 'None (direct output)', channels: 'Unlimited', weight: '12 lbs',
+    dimensions: '19" × 16" × 4"', year: 2018,
+    tagline: 'The studio-grade standard',
+    description: 'The Axe-Fx III is widely regarded as the most accurate amp modeler available. Its processing power enables incredibly detailed recreation of tube amp behavior.',
+    genres: ['rock', 'metal', 'blues', 'jazz', 'pop', 'country', 'indie'],
+    tones: { warm: 8, bright: 8, crunch: 9, gain: 9, clean: 9 },
+    features: ['Ultra-res modeling', '1000+ presets', 'Global EQ', 'Dual engine', 'USB audio interface']
+  },
+  {
+    id: 'positive-grid-spark', brand: 'Positive Grid', name: 'Spark 40',
+    type: 'modeling', form: 'portable', wattage: 40, price: 299, rating: 4.4,
+    impedance: '8Ω', speaker: '2×4" custom', channels: '4 amp models', weight: '12 lbs',
+    dimensions: '16" × 8" × 7"', year: 2020,
+    tagline: 'Smart amp for the modern player',
+    description: 'The Spark 40 combines amp modeling, effects, and AI-powered features into a compact package. The companion app offers Smart Jam and access to 10,000+ tones.',
+    genres: ['rock', 'blues', 'pop', 'indie', 'country'],
+    tones: { warm: 5, bright: 6, crunch: 6, gain: 6, clean: 7 },
+    features: ['Smart Jam AI', 'Auto Chords', 'ToneCloud access', 'Bluetooth streaming', 'USB audio']
+  },
+  {
+    id: 'fender-mustang', brand: 'Fender', name: 'Mustang GTX100',
+    type: 'hybrid', form: 'combo', wattage: 100, price: 449, rating: 4.5,
+    impedance: '8Ω', speaker: '1×12" Fender Special Design', channels: '200+ presets', weight: '26 lbs',
+    dimensions: '19" × 16" × 9"', year: 2018,
+    tagline: 'Digital brain, analog heart',
+    description: 'The Mustang GTX100 combines Fender\'s digital modeling technology with a Class D power amp and real speaker for a surprisingly authentic feel.',
+    genres: ['rock', 'blues', 'pop', 'country', 'indie'],
+    tones: { warm: 5, bright: 6, crunch: 6, gain: 6, clean: 7 },
+    features: ['200+ presets', 'Fender Tone app', 'Bluetooth', 'USB recording', 'Lightweight design']
+  },
+  {
+    id: 'hughes-kettner-tubemeister', brand: 'Hughes & Kettner', name: 'Tubemeister 18',
+    type: 'hybrid', form: 'combo', wattage: 18, price: 699, rating: 4.5,
+    impedance: '4/8/16Ω', speaker: '1×12" (combo version)', channels: 3, weight: '35 lbs',
+    dimensions: '21" × 17" × 10"', year: 2013,
+    tagline: 'Tube preamp, Class D power',
+    description: 'The Tubemeister 18 pairs a genuine tube preamp with a Class D power section, delivering real tube warmth and feel at a fraction of the weight.',
+    genres: ['rock', 'blues', 'metal', 'jazz'],
+    tones: { warm: 7, bright: 6, crunch: 7, gain: 7, clean: 6 },
+    features: ['Tube preamp', 'Class D power amp', 'Red Box DI output', 'Effects loop', 'Switchable wattage']
+  },
+  {
+    id: 'blackstar-ht-series', brand: 'Blackstar', name: 'HT-20R MkII',
+    type: 'hybrid', form: 'combo', wattage: 20, price: 549, rating: 4.4,
+    impedance: '8Ω', speaker: '1×12" Blackstar designed', channels: 2, weight: '34 lbs',
+    dimensions: '22" × 18" × 10"', year: 2020,
+    tagline: 'British-designed versatility',
+    description: 'Blackstar\'s HT-20R MkII combines a 12AX7 tube preamp with a solid-state power section. ISF control lets you blend between American and British tonal characters.',
+    genres: ['rock', 'blues', 'metal', 'country'],
+    tones: { warm: 7, bright: 5, crunch: 7, gain: 7, clean: 6 },
+    features: ['ISF tone shaping', 'Tube preamp', 'Emulated output', 'Power reduction', 'Effects loop']
+  },
+  {
+    id: 'blackstar-fly3', brand: 'Blackstar', name: 'Fly 3',
+    type: 'solid-state', form: 'portable', wattage: 3, price: 89, rating: 4.3,
+    impedance: 'N/A', speaker: '1×3"', channels: 1, weight: '2 lbs',
+    dimensions: '7" × 5" × 4"', year: 2015,
+    tagline: 'Big tone, tiny box',
+    description: 'The Blackstar Fly 3 proves that great tone doesn\'t require big gear. This mini amp features ISF circuit, delay effect, and MP3/line-in for jamming along.',
+    genres: ['rock', 'blues', 'pop'],
+    tones: { warm: 5, bright: 5, crunch: 5, gain: 4, clean: 5 },
+    features: ['ISF control', 'Built-in delay', 'Battery powered', 'MP3/line input', 'Emulated output']
+  },
+  {
+    id: 'yamaha-thr10ii', brand: 'Yamaha', name: 'THR10II',
+    type: 'modeling', form: 'portable', wattage: 20, price: 399, rating: 4.7,
+    impedance: '8Ω', speaker: '2×3"', channels: '15 amp types', weight: '6 lbs',
+    dimensions: '14" × 7" × 6"', year: 2019,
+    tagline: 'Desktop tone, stage-worthy',
+    description: 'The Yamaha THR10II is the modern desktop amplifier perfected. With 15 amp types, built-in effects, Bluetooth audio, and a USB interface.',
+    genres: ['rock', 'blues', 'jazz', 'pop', 'indie', 'country'],
+    tones: { warm: 7, bright: 6, crunch: 6, gain: 6, clean: 8 },
+    features: ['15 amp types', 'Bluetooth audio', 'USB interface', 'Reverb/delay/chorus', 'Battery or AC power']
+  },
+  {
+    id: 'danelectro-deco', brand: 'Danelectro', name: 'Deacon 30W',
+    type: 'tube', form: 'combo', wattage: 30, price: 599, rating: 4.3,
+    impedance: '8Ω', speaker: '1×12"', channels: 2, weight: '30 lbs',
+    dimensions: '22" × 16" × 9"', year: 2020,
+    tagline: 'Retro soul, modern reliability',
+    description: 'Danelectro\'s Deacon brings their legendary vintage vibe to a modern tube amp format. With distinctive retro styling and warm EL84-driven tones.',
+    genres: ['blues', 'rock', 'indie', 'country'],
+    tones: { warm: 8, bright: 6, crunch: 6, gain: 5, clean: 6 },
+    features: ['EL84 output tubes', 'Retro styling', 'Spring reverb', 'Vibrato circuit']
+  },
+  {
+    id: 'supro-delta', brand: 'Supro', name: 'Delta King 12',
+    type: 'tube', form: 'combo', wattage: 15, price: 749, rating: 4.5,
+    impedance: '8Ω', speaker: '1×12" Supro DK12', channels: 1, weight: '32 lbs',
+    dimensions: '20" × 16" × 9"', year: 2020,
+    tagline: 'Chicago blues reborn',
+    description: 'The Delta King 12 brings the legendary Supro tone back to life. Used by Jimmy Page on Led Zeppelin I, the Supro sound is defined by its raw, midrange-heavy voice.',
+    genres: ['blues', 'rock', 'indie'],
+    tones: { warm: 9, bright: 5, crunch: 7, gain: 5, clean: 5 },
+    features: ['6L6 power tube', 'Spring reverb', 'Tremolo', 'A-class preamp', 'Supro DK12 speaker']
+  }
+];

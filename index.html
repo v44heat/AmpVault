@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AmpVault — Guitar Amplifier Explorer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='2' y='4' width='28' height='24' rx='3' fill='%232c1810'/><circle cx='10' cy='16' r='4' stroke='%23c4501a' stroke-width='1.5' fill='none'/><circle cx='10' cy='16' r='1.5' fill='%23c4501a'/><circle cx='22' cy='12' r='3' stroke='%23c4501a' stroke-width='1' fill='none' opacity='0.5'/><circle cx='22' cy='20' r='3' stroke='%23c4501a' stroke-width='1' fill='none' opacity='0.5'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/themes.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/cards.css">
+  <link rel="stylesheet" href="styles/panels.css">
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="topbar" id="topbar">
+    <div class="topbar__brand">
+      <div class="topbar__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect x="2" y="4" width="28" height="24" rx="3" stroke="currentColor" stroke-width="2"/>
+          <circle cx="10" cy="16" r="4" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="10" cy="16" r="1.5" fill="currentColor"/>
+          <circle cx="22" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="22" cy="20" r="3" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="14" y1="16" x2="19" y2="12" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+          <line x1="14" y1="16" x2="19" y2="20" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+        </svg>
+      </div>
+      <h1 class="topbar__title">Amp<span class="topbar__title--accent">Vault</span></h1>
+    </div>
+    <nav class="topbar__nav">
+      <button class="topbar__btn active" data-view="browse" aria-label="Browse amplifiers">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1" y="1" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="1" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="1" y="10" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="10" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>Browse</span>
+      </button>
+      <button class="topbar__btn" data-view="compare" aria-label="Compare amplifiers">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1v16M1 9h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1"/><rect x="11" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1"/></svg>
+        <span>Compare</span>
+        <span class="topbar__badge" id="compareBadge" hidden>0</span>
+      </button>
+      <button class="topbar__btn" data-view="favorites" aria-label="Saved favorites">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 15.27L2.55 19.2l1.23-7.18L-2.34 5.18l7.22-1.05L9 -3.2l2.12 3.03 7.22 1.05-4.55 4.84 1.23 7.18z" transform="translate(2 0) scale(0.85)" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        <span>Saved</span>
+        <span class="topbar__badge" id="favBadge" hidden>0</span>
+      </button>
+    </nav>
+    <div class="topbar__search">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input type="search" id="searchInput" placeholder="Search amps, brands, tones..." aria-label="Search amplifiers" autocomplete="off">
+      <kbd class="search-kbd" id="searchKbd">⌘K</kbd>
+    </div>
+  </header>
+
+  <main class="app" id="app">
+    <!-- Filter Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__toggle" id="sidebarToggle">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>Filters</span>
+      </div>
+
+      <div class="sidebar__panel" id="filterPanel">
+        <div class="sidebar__section">
+          <h3 class="sidebar__heading">Technology</h3>
+          <div class="filter-chips" id="typeFilters">
+            <button class="chip active" data-filter="type" data-value="all">All</button>
+            <button class="chip" data-filter="type" data-value="tube">Tube</button>
+            <button class="chip" data-filter="type" data-value="solid-state">Solid-State</button>
+            <button class="chip" data-filter="type" data-value="modeling">Modeling</button>
+            <button class="chip" data-filter="type" data-value="hybrid">Hybrid</button>
+          </div>
+        </div>
+
+        <div class="sidebar__section">
+          <h3 class="sidebar__heading">Form Factor</h3>
+          <div class="filter-chips" id="formFilters">
+            <button class="chip active" data-filter="form" data-value="all">All</button>
+            <button class="chip" data-filter="form" data-value="combo">Combo</button>
+            <button class="chip" data-filter="form" data-value="head">Head</button>
+            <button class="chip" data-filter="form" data-value="stack">Stack</button>
+            <button class="chip" data-filter="form" data-value="portable">Portable</button>
+          </div>
+        </div>
+
+        <div class="sidebar__section">
+          <h3 class="sidebar__heading">Wattage</h3>
+          <div class="range-control">
+            <input type="range" id="wattMin" min="1" max="600" value="1" aria-label="Minimum wattage">
+            <div class="range-labels">
+              <span id="wattMinLabel">1W</span>
+              <span class="range-sep">—</span>
+              <span id="wattMaxLabel">600W</span>
+            </div>
+            <input type="range" id="wattMax" min="1" max="600" value="600" aria-label="Maximum wattage">
+          </div>
+        </div>
+
+        <div class="sidebar__section">
+          <h3 class="sidebar__heading">Price Range</h3>
+          <div class="range-control">
+            <input type="range" id="priceMin" min="0" max="5000" step="50" value="0" aria-label="Minimum price">
+            <div class="range-labels">
+              <span id="priceMinLabel">$0</span>
+              <span class="range-sep">—</span>
+              <span id="priceMaxLabel">$5,000</span>
+            </div>
+            <input type="range" id="priceMax" min="0" max="5000" step="50" value="5000" aria-label="Maximum price">
+          </div>
+        </div>
+
+        <div class="sidebar__section">
+          <h3 class="sidebar__heading">Best For</h3>
+          <div class="filter-chips" id="genreFilters">
+            <button class="chip active" data-filter="genre" data-value="all">All</button>
+            <button class="chip" data-filter="genre" data-value="blues">Blues</button>
+            <button class="chip" data-filter="genre" data-value="rock">Rock</button>
+            <button class="chip" data-filter="genre" data-value="metal">Metal</button>
+            <button class="chip" data-filter="genre" data-value="jazz">Jazz</button>
+            <button class="chip" data-filter="genre" data-value="country">Country</button>
+            <button class="chip" data-filter="genre" data-value="indie">Indie</button>
+            <button class="chip" data-filter="genre" data-value="pop">Pop</button>
+          </div>
+        </div>
+
+        <div class="sidebar__section">
+          <h3 class="sidebar__heading">Tone Character</h3>
+          <div class="filter-chips" id="toneFilters">
+            <button class="chip active" data-filter="tone" data-value="all">All</button>
+            <button class="chip" data-filter="tone" data-value="warm">Warm</button>
+            <button class="chip" data-filter="tone" data-value="bright">Bright</button>
+            <button class="chip" data-filter="tone" data-value="clean">Clean</button>
+            <button class="chip" data-filter="tone" data-value="crunch">Crunch</button>
+            <!--, This was the line with the error <button class="chip" data-filter="tone" data-value="high-gain">High Gain</button> -->
+            <button class="chip" data-filter="tone" data-value="gain">High Gain</button>
+
+          </div>
+        </div>
+
+        <button class="sidebar__clear" id="clearFilters">Reset All Filters</button>
+      </div>
+    </aside>
+
+    <!-- Content Area -->
+    <section class="content" id="content">
+      <!-- Browse View -->
+      <div class="view active" id="browseView">
+        <div class="content__header">
+          <div class="content__info">
+            <h2 class="content__title">All Amplifiers</h2>
+            <p class="content__count" id="ampCount">23 amplifiers</p>
+          </div>
+          <div class="content__sort">
+            <label for="sortSelect" class="sr-only">Sort by</label>
+            <select id="sortSelect" class="sort-select">
+              <option value="name">Name A–Z</option>
+              <option value="price-asc">Price: Low → High</option>
+              <option value="price-desc">Price: High → Low</option>
+              <option value="wattage-asc">Wattage: Low → High</option>
+              <option value="wattage-desc">Wattage: High → Low</option>
+              <option value="rating">Top Rated</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filter-active-indicator" id="filterIndicator">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3h12M3 7h8M5 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span id="filterIndicatorText">Filters active</span>
+          <button class="filter-active-indicator__clear" id="filterIndicatorClear">Clear</button>
+        </div>
+
+        <div class="amp-grid" id="ampGrid">
+          <!-- Amp cards injected by JS -->
+        </div>
+
+        <div class="empty-state" id="emptyState" hidden>
+          <div class="empty-state__icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="8" y="12" width="48" height="40" rx="4" stroke="currentColor" stroke-width="2" opacity="0.3"/><circle cx="24" cy="32" r="8" stroke="currentColor" stroke-width="2" opacity="0.3"/><circle cx="44" cy="26" r="5" stroke="currentColor" stroke-width="2" opacity="0.3"/><circle cx="44" cy="40" r="5" stroke="currentColor" stroke-width="2" opacity="0.3"/></svg>
+          </div>
+          <h3 class="empty-state__title">No amplifiers found</h3>
+          <p class="empty-state__text">Try adjusting your filters or search terms to discover more amps.</p>
+          <button class="btn btn--primary" id="emptyReset">Reset Filters</button>
+        </div>
+      </div>
+
+      <!-- Compare View -->
+      <div class="view" id="compareView">
+        <div class="content__header">
+          <div class="content__info">
+            <h2 class="content__title">Compare Amplifiers</h2>
+            <p class="content__count" id="compareCount">0 selected</p>
+          </div>
+          <button class="btn btn--outline" id="clearCompare">Clear All</button>
+        </div>
+
+        <div class="compare-empty" id="compareEmpty">
+          <div class="empty-state__icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="4" y="4" width="24" height="24" rx="3" stroke="currentColor" stroke-width="2" opacity="0.3"/><rect x="36" y="4" width="24" height="24" rx="3" stroke="currentColor" stroke-width="2" opacity="0.3"/><path d="M32 16h0" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.3"/><rect x="4" y="36" width="56" height="24" rx="3" stroke="currentColor" stroke-width="2" opacity="0.3"/></svg>
+          </div>
+          <h3 class="empty-state__title">No amps selected for comparison</h3>
+          <p class="empty-state__text">Browse the catalog and click the compare icon on any amp card to add it here. You can compare up to 4 amplifiers side-by-side.</p>
+          <button class="btn btn--primary" id="goBrowse">Browse Amplifiers</button>
+        </div>
+
+        <div class="compare-table-wrap" id="compareTableWrap" hidden>
+          <table class="compare-table" id="compareTable"></table>
+        </div>
+      </div>
+
+      <!-- Favorites View -->
+      <div class="view" id="favoritesView">
+        <div class="content__header">
+          <div class="content__info">
+            <h2 class="content__title">Saved Amplifiers</h2>
+            <p class="content__count" id="favCount">0 saved</p>
+          </div>
+          <div class="content__sort" style="display:flex;gap:8px">
+            <button class="btn btn--outline" id="exportFavs" title="Download favorites list">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v9M3 7l4 4 4-4M1 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Export
+            </button>
+          </div>
+        </div>
+        <div class="amp-grid" id="favGrid"></div>
+        <div class="empty-state" id="favEmpty">
+          <div class="empty-state__icon">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><path d="M32 54L10 42l-2-18 24-14 24 14-2 18z" stroke="currentColor" stroke-width="2" opacity="0.3" fill="none"/></svg>
+          </div>
+          <h3 class="empty-state__title">No saved amplifiers</h3>
+          <p class="empty-state__text">Click the heart icon on any amp card to save it for later. Your favorites are stored locally and persist across sessions.</p>
+          <button class="btn btn--primary" id="goBrowseFav">Browse Amplifiers</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Detail Panel -->
+  <div class="detail-overlay" id="detailOverlay" hidden>
+    <div class="detail-panel" id="detailPanel" role="dialog" aria-label="Amplifier details">
+      <button class="detail-panel__close" id="detailClose" aria-label="Close details">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="detail-panel__content" id="detailContent"></div>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top" title="Back to top (↑)">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 16V4M4 10l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

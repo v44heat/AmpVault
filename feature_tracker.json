@@ -1,0 +1,70 @@
+[
+  {
+    "name": "Design system & visual direction",
+    "status": "done",
+    "notes": "Warm analog aesthetic - cream/parchment bg, burnt orange accent, vintage amp feel. Playfair Display + DM Sans + IBM Plex Mono."
+  },
+  {
+    "name": "Amp data model & content",
+    "status": "done",
+    "notes": "Full amp catalog with types, specs, tonal characteristics, genre suitability"
+  },
+  {
+    "name": "Final polish & enhancements",
+    "status": "done",
+    "notes": "Adding favicon, subtle hover effects, and keyboard shortcut hints"
+  },
+  {
+    "name": "Browse grid with amp cards",
+    "status": "done"
+  },
+  {
+    "name": "Filter system (type, form, genre, wattage, price, tone)",
+    "status": "done"
+  },
+  {
+    "name": "Detail panel with specs, tone viz, description",
+    "status": "done"
+  },
+  {
+    "name": "Compare mode (up to 4 amps side-by-side)",
+    "status": "done"
+  },
+  {
+    "name": "Favorites with localStorage persistence",
+    "status": "done"
+  },
+  {
+    "name": "Search with debounce",
+    "status": "done"
+  },
+  {
+    "name": "Responsive design (desktop + mobile)",
+    "status": "done"
+  },
+  {
+    "name": "Keyboard navigation & shortcuts (Cmd+K, Escape, Tab)",
+    "status": "done"
+  },
+  {
+    "name": "Loading skeleton state",
+    "status": "done",
+    "notes": "Add a skeleton loading animation while data loads"
+  },
+  {
+    "name": "Keyboard shortcuts (1/2/3 for views, Cmd+K search)",
+    "status": "done"
+  },
+  {
+    "name": "Export favorites as JSON",
+    "status": "done"
+  },
+  {
+    "name": "Scroll-to-top button",
+    "status": "done"
+  },
+  {
+    "name": "Active filter indicator with clear button",
+    "status": "done"
+  }
+]
